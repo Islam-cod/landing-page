@@ -1,5 +1,4 @@
 //Build the NavBar dynamically
-
 let navLinks = document.getElementById("unordered-list");
 let sectionsCount = document.getElementsByClassName("landing__container").length;
 
@@ -28,7 +27,7 @@ for (i = 1; i < sectionsCount + 1; i++) {
       "<button class='section-button' onclick='goToTop()'>Return to Top</button>";
   });
 }
-
+// A helper function
 const scrollToTop = () => {
   const scrolling = document.documentElement.scrollTop || document.body.scrollTop;
   if (scrolling > 0) {
@@ -47,7 +46,7 @@ scrollToTop();
   }
 }
 
-//Checks if section is in view and adds active-class with moving background and color change
+// Add active-class with styling changes
 function checkIfSectionInView() {
   let isInViewport = function(elem) {
     let bounding = elem.getBoundingClientRect();
@@ -82,7 +81,6 @@ window.onscroll = function() {staySticky()};
 let navbar = document.getElementById("header");
 let sticky = header.offsetTop;
 
-// Add the sticky class to the navbar when you reach its scroll position. Remove "sticky" when you leave the scroll position
 function staySticky() {
   if (window.pageYOffset >= sticky) {
     navbar.classList.add("sticky")
