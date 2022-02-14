@@ -7,4 +7,4 @@ A simple interactive template for a landing-page
 * https://developer.mozilla.org/en-US/docs/Glossary/Viewport
 * https://developer.mozilla.org/en-US/docs/Web/API/Element/getBoundingClientRect
 
-!(https://github.com/Islam-cod/landing-page/blob/main/Landing-page.PNG)
+<img src="Islam-cod/landing-page/blob/main/Landing-page.PNG" alt="Alt text">
