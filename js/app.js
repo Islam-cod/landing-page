@@ -1,8 +1,7 @@
 //Build the menu dynamically
 
 let unorderedList = document.getElementById("unordered-list");
-let containerCount = document.getElementsByClassName("landing__container")
-  .length;
+let containerCount = document.getElementsByClassName("landing__container").length;
 
 for (i = 1; i < containerCount + 1; i++) {
   let item = "#section" + i + "-title";
