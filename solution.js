@@ -34,6 +34,18 @@ for (i = 1; i < containerCount + 1; i++) {
 }
 
 
+
+//This is the helper function for a scroll (I set it a bit slow for visibility)
+/* const scrollToTop = () => {
+  const scrolling = document.documentElement.scrollTop || document.body.scrollTop;
+  if (scrolling > 0) {
+    window.requestAnimationFrame(scrollToTop);
+    window.scrollTo(0, scrolling - scrolling / 50);
+  }
+}; */
+
+
+
 //Changed from 'document.documentElement.scrollTop = 0' method to a visible scroll to top as per reviewer
 
 
