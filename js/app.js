@@ -1,10 +1,9 @@
-//Build the menu dynamically
+//Build the NavBar dynamically
 
-let navItems = document.getElementById("unordered-list");
-const items = document.getElementsByClassName("landing__container");
-let itemsCount = items.length;
+let navLinks = document.getElementById("unordered-list");
+let sectionsCount = document.getElementsByClassName("landing__container").length;
 
-for (i = 1; i < itemsCount + 1; i++) {
+for (i = 1; i < sectionsCount + 1; i++) {
   let item = "#section" + i + "-title";
   let itemValue = document.querySelector(item);
   let itemText = itemValue.textContent;
@@ -14,35 +13,42 @@ for (i = 1; i < itemsCount + 1; i++) {
   newLine.setAttribute("id", listItem);
   newLine.setAttribute("class", "nav-list-item");
   newLine.appendChild(lineText);
-  navItems.appendChild(newLine);
-
-  let sectionTarget = document.getElementById("section" + i);
+  navLinks.appendChild(newLine);
+//Create a button for every section
+  let itemTarget = document.getElementById("section" + i);
   let listTarget = document.getElementById(listItem);
   let buttonName = "section" + i + "-button";
   let buttonToAdd = document.getElementById(buttonName);
 
-   //Scrolling on clicking on NavBar
+  //Adds button when scrolls into view
+
   listTarget.addEventListener("click", function() {
-    sectionTarget.scrollIntoView ()
-    //Adds a button after scrolling
+    itemTarget.scrollIntoView ()
     buttonToAdd.innerHTML =
       "<button class='section-button' onclick='goToTop()'>Return to Top</button>";
   });
 }
 
+const scrollToTop = () => {
+  const scrolling = document.documentElement.scrollTop || document.body.scrollTop;
+  if (scrolling > 0) {
+    window.requestAnimationFrame(scrollToTop);
+    window.scrollTo(0, scrolling - scrolling / 50);
+  }
+};
+
 
 // On button click, goes to top of page 
 function goToTop() {
 scrollToTop();
-
-  for (i = 1; i < itemsCount + 1; i++) {
+  for (i = 1; i < sectionsCount + 1; i++) {
     let buttonToDelete = document.getElementById("section" + i + "-button");
     buttonToDelete.innerHTML = "";
   }
 }
 
 //Checks if section is in view and adds active-class with moving background and color change
-function checkSectionView() {
+function checkIfSectionInView() {
   let isInViewport = function(elem) {
     let bounding = elem.getBoundingClientRect();
     return (
@@ -54,7 +60,7 @@ function checkSectionView() {
     );
   };
 
-  for (i = 1; i < itemsCount + 1; i++) {
+  for (i = 1; i < sectionsCount + 1; i++) {
     let sectionInFullView = document.getElementById("section" + i);
 
     window.addEventListener(
@@ -71,16 +77,10 @@ function checkSectionView() {
   }
 }
 
-//Add sticky header as per review (Used tutorial here: https://www.w3schools.com/howto/howto_js_navbar_sticky.asp)
-
-// When the user scrolls the page, execute myFunction
+// Make the NavBar sticky
 window.onscroll = function() {staySticky()};
-
-// Get the navbar
-var navbar = document.getElementById("header");
-
-// Get the offset position of the navbar
-var sticky = header.offsetTop;
+let navbar = document.getElementById("header");
+let sticky = header.offsetTop;
 
 // Add the sticky class to the navbar when you reach its scroll position. Remove "sticky" when you leave the scroll position
 function staySticky() {
@@ -90,4 +90,4 @@ function staySticky() {
     navbar.classList.remove("sticky");
   }
 }
-checkSectionView();
+checkIfSectionInView();

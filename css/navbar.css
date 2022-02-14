@@ -1,7 +1,6 @@
 .header {
   background-color: orange;
   min-height: 50px;
-  border-bottom: 10px solid black;
   display: flex;
   justify-content: center;
   z-index: 10;
@@ -25,6 +24,9 @@ ul {
   list-style: none;
 }
 
+.nav-list-item:hover {
+  background-color: rgba(47, 82, 105, 0.26);
+}
 .content {
   padding: 10px;
 }
@@ -38,6 +40,12 @@ ul {
   padding: 20px;
   font-weight: 600;
   cursor: pointer;
+  position: fixed; /* Fixed/sticky position */
+  bottom: 20px; /* Place the button at the bottom of the page */
+  right: 30px; /* Place the button 30px from the right */
+  z-index: 99; /* Make sure it does not overlap */
+  border: none; /* Remove borders */
+  outline: none; /* Remove outline */
 }
 
 /* The sticky class is added to the navbar with JS when it reaches its scroll position */
