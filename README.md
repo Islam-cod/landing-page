@@ -6,3 +6,4 @@ A simple interactive template for a landing-page
 * https://www.w3schools.com/howto/howto_js_scroll_to_top.asp
 * https://developer.mozilla.org/en-US/docs/Glossary/Viewport
 * https://developer.mozilla.org/en-US/docs/Web/API/Element/getBoundingClientRect
+https://github.com/Islam-cod/landing-page/blob/main/Landing-page.PNG
