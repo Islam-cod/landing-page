@@ -36,12 +36,6 @@ ul {
   padding: 10px;
 }
 
-.sticky {
-  top: 0;
-  position: fixed;
-  width: 100%;
-}
-
 .spacer {
   height: 30px;
 }
@@ -58,7 +52,7 @@ ul {
   }
 }
 
-#myBtn {
+#topBtn {
   display: none;
   position: fixed;
   bottom: 20px;
@@ -74,7 +68,7 @@ ul {
   font-size: 18px;
 }
 
-#myBtn:hover {
+#topBtn:hover {
   background-color: rgb(224, 90, 0);
 }
 
