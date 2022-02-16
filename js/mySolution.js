@@ -1,3 +1,22 @@
+/**
+ * 
+ * Manipulating the DOM exercise.
+ * Exercise programmatically builds navigation,
+ * scrolls to anchors from navigation,
+ * and highlights section in viewport upon scrolling.
+ * 
+ * Dependencies: None
+ * 
+ * JS Version: ES2015/ES6
+ * 
+ * JS Standard: ESlint
+ * 
+*/
+
+/**
+ * Comments should be present at the beginning of each procedure and class.
+ * Great to have comments before crucial code sections within the procedure.
+*/
 
 /**
  * Define Global Variables
@@ -5,15 +24,14 @@
 */
 const NavBar = document.getElementById("unordered-list")
 let sectionList = document.querySelectorAll("section");
-
-// Adding a "scroll to top" button
 const body = document.querySelector("body")
 const topButton= document.createElement("button");
-topButton.innerHTML= `<button onclick="topFunction()" id="topBtn" title="Go to top">Return to Top</button>`
+topButton.innerHTML= `<button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>`
 body.appendChild(topButton);
-
-/*
- Start Helper Functions
+/**
+ * End Global Variables
+ * Start Helper Functions
+ * 
 */
 function getSectionId(section){
   return section.id
@@ -25,6 +43,9 @@ function getSectionTitle(section){
 
 function CreateNavLink(sectionId, sectionTitle){
     const liElement = document.createElement("li")
+    //const aElement = document.createElement("a")
+    //aElement.innerHTML = `<a href ="#${sectionId}"> ${sectionTitle} </a>`
+    //liElement.appendChild(aElement)
     liElement.innerHTML = `<a href ="#${sectionId}" class="nav-link"> ${sectionTitle} </a>`
     liElement.classList.add("nav-item")
     NavBar.appendChild(liElement)
@@ -45,13 +66,25 @@ function topFunction() {
     document.documentElement.scrollTop = 0;
   }
 
+/**
+ * End Helper Functions
+ * Begin Main Functions
+ * 
+*/
 sectionList.forEach(section => {
+    // get section id
     const sectionId = getSectionId(section)
+    // get section title
     const sectionTitle = getSectionTitle(section)
+    // create a navlink with the title and id
     CreateNavLink(sectionId, sectionTitle)
     })
 
-// Add active state to sections in viewport
+// build the nav
+
+
+// Add class 'active' to section when near top of viewport
+
 let isInViewport = function(elem) {
     let distance = elem.getBoundingClientRect();
     return (
@@ -66,7 +99,9 @@ let isInViewport = function(elem) {
   
   window.addEventListener('scroll', function(event) {
   findMe.forEach(element => {
+
       if (isInViewport(element)) {
+
         element.classList.add("your-active-class");
       } else {
         element.classList.remove("your-active-class"); 
@@ -74,5 +109,22 @@ let isInViewport = function(elem) {
   });
   }, false);
 
+// Scroll to anchor ID using scrollTO event
+
+
+/**
+ * End Main Functions
+ * Begin Events
+ * 
+*/
+
+// Build menu 
+
+// Scroll to section on link click
+
+// Set sections as active
+
+
+mybutton = document.getElementById("myBtn");
 
 window.onscroll = function() {scrollFunction()};

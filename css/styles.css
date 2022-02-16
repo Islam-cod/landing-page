@@ -58,6 +58,26 @@ ul {
   }
 }
 
+#myBtn {
+  display: none;
+  position: fixed;
+  bottom: 20px;
+  right: 30px;
+  z-index: 99;
+  border: none;
+  outline: none;
+  background-color: orange;
+  color: white;
+  cursor: pointer;
+  padding: 20px;
+  border-radius: 20px;
+  font-size: 18px;
+}
+
+#myBtn:hover {
+  background-color: rgb(224, 90, 0);
+}
+
 /* ---- Base Rules ---- */
 body {
   background: rgb(136, 203, 171);
