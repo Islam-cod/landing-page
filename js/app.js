@@ -1,6 +1,5 @@
-
 //Build NavBar dynamically
-const NavBar = document.getElementById("unordered-list")
+const NavBar = document.getElementById("navbar__list")
 let sectionList = document.querySelectorAll("section");
 
 //Build a "scroll to top" button
@@ -20,7 +19,7 @@ function getSectionTitle(section){
 
 function CreateNavLink(sectionId, sectionTitle){
     const liElement = document.createElement("li")
-    liElement.innerHTML = `<a href ="#${sectionId}" class="nav-link"> ${sectionTitle} </a>`
+    liElement.innerHTML = `<a href ="#${sectionId}" class="nav-link menu__link"> ${sectionTitle} </a>`
     liElement.classList.add("nav-item")
     NavBar.appendChild(liElement)
   }
@@ -48,7 +47,6 @@ sectionList.forEach(section => {
 
 
 // Add class 'active' to section when near top of viewport
-
 let isInViewport = function(elem) {
     let distance = elem.getBoundingClientRect();
     return (
@@ -70,5 +68,16 @@ let isInViewport = function(elem) {
   });
   }, false);
 
+//Add class "sticky" to NavBar
+let sticky = NavBar.offsetTop;
+  function besticky() {
+    if (window.pageYOffset >= sticky) {
+      NavBar.classList.add("sticky")
+    } else {
+      NavBar.classList.remove("sticky");
+    }
+  }
+
 mybutton = document.getElementById("topBtn");
 window.onscroll = function() {scrollFunction()};
+window.onscroll = function() {besticky()}

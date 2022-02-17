@@ -1,11 +1,26 @@
 /* NavBar and Button styling */
-.header {
+/* .header {
   background-color: orange;
   min-height: 50px;
   display: flex;
   justify-content: center;
   z-index: 10;
   cursor: pointer;
+} */
+/* The sticky class is added to the navbar with JS when it reaches its scroll position */
+.sticky {
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+
+/* Add some top padding to the page content to prevent sudden quick movement (as the navigation bar gets a new position at the top of the page (position:fixed and top:0) */
+.sticky + .content {
+  padding-top: 60px;
+}
+
+#navbar__list {
+  background-color: #eee;
 }
 
 ul {
@@ -21,17 +36,12 @@ ul {
 .nav-item .nav-link {
   text-decoration: none;
   font-weight: 700;
-  margin-right: 10px;
-  margin-top: 10px;
   list-style: none;
   color: white;
   text-align: center;
   text-decoration: none;
 }
 
-.nav-item:hover {
-  background-color: rgba(47, 82, 105, 0.26);
-}
 .content {
   padding: 10px;
 }
