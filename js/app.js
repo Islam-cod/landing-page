@@ -1,44 +1,44 @@
 //Build NavBar dynamically
-const NavBar = document.getElementById("navbar__list")
+const NavBar = document.getElementById("navbar__list");
 let sectionList = document.querySelectorAll("section");
+
 //Build a "scroll to top" button
-const body = document.querySelector("body")
-const topButton= document.createElement("button");
-topButton.innerHTML= `<button onclick="topFunction()" id="topBtn" title="Go to top">Return to Top</button>`
+const body = document.querySelector("body");
+const topButton = document.createElement("button");
+topButton.innerHTML = `<button onclick="topFunction()" id="topBtn" title="Go to top">Return to Top</button>`;
 body.appendChild(topButton);
 
-
 mybutton = document.getElementById("topBtn");
-window.onscroll = function() {scrollFunction()};
+window.onscroll = function () {
+  scrollFunction();
+};
 
-//Set NavBar links 
-function getSectionId(section){
-  return section.id
+//Set NavBar links
+function getSectionId(section) {
+  return section.id;
 }
 
-function getSectionTitle(section){
-    return section.querySelector(".title").innerText
-  }
+function getSectionTitle(section) {
+  return section.querySelector(".title").innerText;
+}
 
-function CreateNavLink(section){
-    const sectionTitle = getSectionTitle(section);
-    const sectionId = getSectionId(section);
-    const liElement = document.createElement("li")
-    liElement.innerHTML = `<a class="nav-link menu__link"> ${sectionTitle} </a>`
-    liElement.classList.add("nav-item", sectionId)
-    NavBar.appendChild(liElement)
-    liElement.addEventListener("click", function() {
-      section.scrollIntoView ({
-        behavior: 'smooth'}
-      )
+function CreateNavLink(section) {
+  const sectionTitle = getSectionTitle(section);
+  const sectionId = getSectionId(section);
+  const liElement = document.createElement("li");
+  liElement.innerHTML = `<a class="nav-link menu__link"> ${sectionTitle} </a>`;
+  liElement.classList.add("nav-item", sectionId);
+  NavBar.appendChild(liElement);
+  liElement.addEventListener("click", function () {
+    section.scrollIntoView({
+      behavior: "smooth",
     });
-    }
+  });
+}
 
-
-sectionList.forEach(section => {
-    CreateNavLink(section)
-    })
-
+sectionList.forEach((section) => {
+  CreateNavLink(section);
+});
 
 // When the user scrolls down, show the button
 function scrollFunction() {
@@ -51,52 +51,56 @@ function scrollFunction() {
 
 // When the user clicks on the button, scroll to the top of the document
 function topFunction() {
-  document.body.scrollTop = 0; 
+  document.body.scrollTop = 0;
   document.documentElement.scrollTop = 0;
 }
 
-
 // Add class 'active' to section when near top of viewport
-let isInViewport = function(elem) {
-    let distance = elem.getBoundingClientRect();
-    return (
-      distance.top <= 40 &&
-      distance.bottom <=
-       (window.innerHeight || document.documentElement.clientHeight) &&
-      distance.right <= 
+let isInViewport = function (elem) {
+  let distance = elem.getBoundingClientRect();
+  return (
+    distance.top <= 50 &&
+    distance.bottom <=
+      (window.innerHeight || document.documentElement.clientHeight) &&
+    distance.right <=
       (window.innerWidth || document.documentElement.clientWidth)
-    );
-  };
-  
-  let findMe = document.querySelectorAll("section");
-  window.addEventListener('scroll', function(event) {
-  findMe.forEach(element => {
+  );
+};
+
+let findMe = document.querySelectorAll("section");
+window.addEventListener(
+  "scroll",
+  function (event) {
+    findMe.forEach((element) => {
       if (isInViewport(element)) {
         element.classList.add("your-active-class");
       } else {
-        element.classList.remove("your-active-class"); 
+        element.classList.remove("your-active-class");
       }
-  });
-  }, false);
+    });
+  },
+  false
+);
 
-//Highlight NavBar
+//Highlight NavBar while section is viewed
+
 let navItemList = document.querySelectorAll("ul .nav-item");
 
-window.addEventListener("scroll", ()=> {
-  let sectionId ="";
-  sectionList.forEach(section => {
+window.addEventListener("scroll", () => {
+  let sectionId = "";
+  sectionList.forEach((section) => {
     const sectionTop = section.offsetTop;
     const sectionHeight = section.clientHeight;
-    if(window.scrollY >= (sectionTop - sectionHeight / 3)) {
+    if (window.scrollY >= sectionTop - sectionHeight / 3) {
       sectionId = getSectionId(section);
     }
-  })
+  });
 
-  navItemList.forEach( li => {
-    if(li.classList.contains(sectionId)){
-      li.classList.add("active_nav")
+  navItemList.forEach((li) => {
+    if (li.classList.contains(sectionId)) {
+      li.classList.add("active_nav");
     } else {
-      li.classList.remove("active_nav")
+      li.classList.remove("active_nav");
     }
-  })
-})
+  });
+});

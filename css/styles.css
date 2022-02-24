@@ -1,12 +1,4 @@
 /* NavBar and Button styling */
-/* .header {
-  background-color: orange;
-  min-height: 50px;
-  display: flex;
-  justify-content: center;
-  z-index: 10;
-  cursor: pointer;
-} */
 .navbar__menu {
   position: -webkit-sticky;
   position: sticky;
