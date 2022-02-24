@@ -7,20 +7,21 @@
   z-index: 10;
   cursor: pointer;
 } */
-/* The sticky class is added to the navbar with JS when it reaches its scroll position */
-.sticky {
-  position: fixed;
+.navbar__menu {
+  position: -webkit-sticky;
+  position: sticky;
   top: 0;
-  width: 100%;
+  z-index: 1000;
 }
 
-/* Add some top padding to the page content to prevent sudden quick movement (as the navigation bar gets a new position at the top of the page (position:fixed and top:0) */
-.sticky + .content {
-  padding-top: 60px;
+.active_nav {
+  background-color: rgb(100, 100, 100);
+  transition: ease 0.3s all;
 }
 
 #navbar__list {
   background-color: #eee;
+  cursor: pointer;
 }
 
 ul {
@@ -162,7 +163,6 @@ section {
   color: #fff;
   transition: ease 0.3s all;
 }
-
 /* Header Styles */
 .page__header {
   background: #fff;
