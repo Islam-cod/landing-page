@@ -29,7 +29,8 @@ function CreateNavLink(section) {
   liElement.innerHTML = `<a class="nav-link menu__link"> ${sectionTitle} </a>`;
   liElement.classList.add("nav-item", sectionId);
   NavBar.appendChild(liElement);
-  liElement.addEventListener("click", function () {
+  liElement.addEventListener("click", function (event) {
+    event.preventDefault();
     section.scrollIntoView({
       behavior: "smooth",
     });
@@ -56,26 +57,25 @@ function topFunction() {
 }
 
 // Add class 'active' to section when near top of viewport
-let isInViewport = function (elem) {
-  let distance = elem.getBoundingClientRect();
+function isInViewport (elem) {
+  const bounding = elem.getBoundingClientRect();
   return (
-    distance.top <= 50 &&
-    distance.bottom <=
-      (window.innerHeight || document.documentElement.clientHeight) &&
-    distance.right <=
-      (window.innerWidth || document.documentElement.clientWidth)
+      bounding.top >= 0 &&
+      bounding.left >= 0 &&
+      bounding.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+      bounding.right <= (window.innerWidth || document.documentElement.clientWidth)
   );
 };
 
-let findMe = document.querySelectorAll("section");
+let sections = document.querySelectorAll("section");
 window.addEventListener(
   "scroll",
   function (event) {
-    findMe.forEach((element) => {
-      if (isInViewport(element)) {
-        element.classList.add("your-active-class");
+    sections.forEach((section) => {
+      if (isInViewport(section)) {
+        section.classList.add("your-active-class");
       } else {
-        element.classList.remove("your-active-class");
+        section.classList.remove("your-active-class");
       }
     });
   },
