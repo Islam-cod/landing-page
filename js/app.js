@@ -57,15 +57,17 @@ function topFunction() {
 }
 
 // Add class 'active' to section when near top of viewport
-function isInViewport (elem) {
+function isInViewport(elem) {
   const bounding = elem.getBoundingClientRect();
   return (
-      bounding.top >= 0 &&
-      bounding.left >= 0 &&
-      bounding.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
-      bounding.right <= (window.innerWidth || document.documentElement.clientWidth)
+    bounding.top >= 0 &&
+    bounding.left >= 0 &&
+    bounding.bottom <=
+      (window.innerHeight || document.documentElement.clientHeight) &&
+    bounding.right <=
+      (window.innerWidth || document.documentElement.clientWidth)
   );
-};
+}
 
 let sections = document.querySelectorAll("section");
 window.addEventListener(
